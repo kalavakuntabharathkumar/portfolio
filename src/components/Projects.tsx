@@ -12,8 +12,8 @@ const PROJECTS = [
       'Zod-validated typed API client with robust error boundaries',
       '9 domain routers wired with loading skeletons and error states'
     ],
-    github: '#',
-    figma: '#'
+    github: '',
+    figma: ''
   },
   {
     title: 'Enterprise OS Dashboard',
@@ -25,8 +25,8 @@ const PROJECTS = [
       'AI Insights chat assistant powered by OpenAI API',
       'Recharts KPI dashboard with real-time data visualization'
     ],
-    github: '#',
-    figma: '#'
+    github: '',
+    figma: ''
   }
 ];
 
@@ -67,12 +67,24 @@ export default function Projects() {
                   <p className="text-sm text-muted-foreground mt-1">{project.subtitle}</p>
                 </div>
                 <div className="flex gap-3 text-muted-foreground">
-                  <a href={project.github} className="hover:text-primary transition-colors" aria-label={`GitHub repo for ${project.title}`}>
-                    <Github className="w-5 h-5" />
-                  </a>
-                  <a href={project.figma} className="hover:text-primary transition-colors" aria-label={`Figma design for ${project.title}`}>
-                    <Figma className="w-5 h-5" />
-                  </a>
+                  {project.github ? (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors" aria-label={`GitHub repo for ${project.title}`}>
+                      <Github className="w-5 h-5" />
+                    </a>
+                  ) : (
+                    <span className="opacity-30 cursor-not-allowed" aria-label={`GitHub repo for ${project.title} — link coming soon`}>
+                      <Github className="w-5 h-5" />
+                    </span>
+                  )}
+                  {project.figma ? (
+                    <a href={project.figma} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors" aria-label={`Figma design for ${project.title}`}>
+                      <Figma className="w-5 h-5" />
+                    </a>
+                  ) : (
+                    <span className="opacity-30 cursor-not-allowed" aria-label={`Figma design for ${project.title} — link coming soon`}>
+                      <Figma className="w-5 h-5" />
+                    </span>
+                  )}
                 </div>
               </div>
 
